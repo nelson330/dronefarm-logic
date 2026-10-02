@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+  }
+  
+  h1, h2, h3, .font-heading {
+    font-family: 'Fredoka', 'Nunito', cursive, sans-serif;
+  }
+}
+
+/* Hide all browser scrollbars completely while preserving full scrollability */
+* {
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* IE and Edge */
+}
+
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+/* No scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+/* Blockly styling overrides */
+.blocklyMainBackground {
+  stroke-width: 0 !important;
+  fill: #ffffff !important;
+}
+
+/* Completely eliminate any left sidebar, toolbox, and flyout */
+.blocklyToolboxDiv,
+.blocklyFlyout,
+.blocklyFlyoutBackground {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Completely hide Blockly native SVG vertical and horizontal scrollbars */
+.blocklyScrollbarVertical,
+.blocklyScrollbarHorizontal,
+.blocklyScrollbarBackground,
+.blocklyScrollbarHandle {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Highlight running block with gentle glow */
+.blocklyHighlighted {
+  filter: drop-shadow(0 0 10px #fbbf24) drop-shadow(0 0 16px #f59e0b) !important;
+  stroke: #f59e0b !important;
+  stroke-width: 3px !important;
+}
+
+/* Screen shake animation for obstacle collision */
+@keyframes screen-shake {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  10%, 30%, 50%, 70%, 90% { transform: translate(-7px, 5px) rotate(-0.6deg); }
+  20%, 40%, 60%, 80% { transform: translate(7px, -5px) rotate(0.6deg); }
+}
+
+.screen-shake {
+  animation: screen-shake 0.55s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Drone Logic Lab",
+  "description": "Juego educativo interactivo de lógica de programación con bloques Scratch y dron autónomo en granja 3D isométrica.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
