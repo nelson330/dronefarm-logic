@@ -83,3 +83,20 @@
 .screen-shake {
   animation: screen-shake 0.55s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
+
+/* Inline input editor styling (replaces default browser popup prompts with clean in-place editing) */
+.blocklyHtmlInput {
+  font-family: inherit !important;
+  font-weight: 800 !important;
+  font-size: 15px !important;
+  border-radius: 8px !important;
+  outline: none !important;
+  border: 2px solid #0284c7 !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25) !important;
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  text-align: center !important;
+  touch-action: manipulation !important;
+  padding: 2px 4px !important;
+}
+

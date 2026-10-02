@@ -6,6 +6,22 @@ import { soundManager } from '../utils/audio';
 
 // Register Custom Drone Logic Lab Blocks in Zelos/Scratch 3.0 style
 const registerCustomBlocks = () => {
+  // Always force inline editing on mobile and touch devices instead of popup prompt modal
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (Blockly.FieldTextInput.prototype as any).showPromptEditor = function (this: any) {
+    this.showInlineEditor(false, true);
+  };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (Blockly.FieldTextInput.prototype as any).showEditor_ = function (
+    this: any,
+    _e?: Event,
+    quietInput: boolean = false,
+    manageEphemeralFocus: boolean = true
+  ) {
+    this.workspace_ = this.sourceBlock_.workspace;
+    this.showInlineEditor(quietInput, manageEphemeralFocus);
+  };
+
   if (Blockly.Blocks['when_start']) return;
 
   // 1. Hat Block: AL INICIAR ⚑
@@ -484,6 +500,7 @@ export const BlocklyEditor: React.FC<BlocklyEditorProps> = ({
     const workspace = Blockly.inject(blocklyDivRef.current, {
       renderer: 'zelos',
       theme: Blockly.Themes.Zelos,
+      modalInputs: false, // Ensures inputs edit directly inline on mobile devices
       move: {
         scrollbars: {
           horizontal: true,
